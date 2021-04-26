@@ -1,0 +1,240 @@
+/*MAIN*/
+.main-wrapper {
+    height: 100%;
+    padding-top: 55px;
+    overflow-x: hidden;
+}
+.main-title-container {
+    font-size: 46px;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-bottom: 52px
+}
+.search-box-wrapper {
+    float: left;
+    margin-top: 12.5px;
+    margin-left: 30px;
+    padding: 0 11px;
+    width: 270px;
+    height: 30px;
+    border-radius: 14.5px;
+    background-color: #f8f8f8
+}
+.search-box-wrapper .search-box-search-btn,.search-box-wrapper .search-box-query-box,.search-box-wrapper .search-box-cancel-btn {
+    height: 30px;
+    float: left
+}
+.search-box-wrapper .search-box-search-btn,.search-box-wrapper .search-box-cancel-btn {
+    width: 30px
+}
+.search-box-wrapper .search-box-query-box {
+    width: 188px
+}
+.search-box-wrapper .search-box-query-box  {
+    height: 30px
+}
+.search-box-wrapper .search-box-query-box input{
+    width: 100%;
+    height: 30px;
+    border: 0;
+    font-size: 14px;
+    background: #f8f8f8 !important;
+    line-height: 30px
+}
+
+.search-box-wrapper .search-box-query-box input::placeholder {
+    font-size: 12px;
+    font-weight: normal;
+    color: #d6d6d6;
+}
+
+.search-box-wrapper .search-box-search-btn img {
+    width: 18px;
+    display: block;
+    margin-top: 6px
+}
+
+.search-box-wrapper .search-box-cancel-btn img {
+    display: none;
+    width: 18px;
+    margin-top: 6px;
+    margin-left: 12px;
+}
+
+.main-search-box-container {
+    width: 600px;
+    margin: 0 auto;
+    height: 51px;
+}
+.main-search-box-container .search-box-wrapper {
+    width: 100%;
+    margin: 0;
+    height: 51px;
+    background: none;
+    border-bottom: 1px solid gray;
+    border-radius: 0;
+    padding: 0 5px;
+    position: relative;
+}
+.main-search-box-container .search-box-wrapper .search-box-search-btn {
+    width: 43px;
+    height: 43px
+}
+
+.main-search-box-container .search-box-wrapper .search-box-search-btn img {
+    width: 43px;
+    margin-top: 0
+}
+
+.main-search-box-container .search-box-wrapper .search-box-query-box {
+    width: calc(100% - 73px);
+    height: 43px;
+    position: relative
+}
+
+.main-search-box-container .search-box-wrapper .search-box-query-box {
+    height: 43px
+}
+
+.main-search-box-container .search-box-wrapper .search-box-query-box input {
+    height: 43px;
+    background: #fff !important;
+    padding: 0 10px;
+    font-size: 22px;
+    line-height: 43px
+}
+
+.main-recent-wrapper {
+    text-align: center;
+    display: block;
+    margin: 48px auto 24px;
+    width: 775px;
+    height: 304px;
+    overflow: hidden
+}
+.main-recent-wrapper .recent-academy,.main-recent-wrapper .recent-acadam {
+    float: left
+}
+.main-recent-wrapper .recent-academy {
+    width: 323px;
+    margin-right: 17px
+}
+.main-recent-wrapper .recent-acadam {
+    width: 435px
+}
+.main-wrapper .list-header {
+    height: 30px;
+    margin-bottom: 5px
+}
+
+.main-wrapper .list-title {
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 30px;
+    text-align: left;
+    float: left
+}
+.d-recent-academy {
+    height: 500px;
+    background-color: #f7f7f7;
+}
+
+.d-recent-academy .list-header {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 40px
+}
+
+.d-recent-academy .reload-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    float: right;
+    cursor: pointer;
+    text-align: center
+}
+
+.d-recent-academy .reload-btn i {
+    line-height: 40px
+}
+
+.d-recent-academy .list-item {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    color: #444444;
+    text-decoration: none
+}
+
+.d-recent-academy .list-item span {
+    font-size: 0.9em;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: left;
+    display: block
+}
+
+.d-recent-academy a {
+    text-decoration: none;
+    color: inherit
+}
+.d-recent-acadam {
+    height: 500px;
+    background-color: #f7f7f7
+}
+
+.d-recent-acadam .list-header {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 40px
+}
+
+.d-recent-acadam .list-header .total {
+    float: right;
+    margin-right: 1em
+}
+
+.d-recent-acadam .list-item {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    color: #444444;
+    text-decoration: none
+}
+
+.d-recent-acadam .list-item span {
+    font-size: 0.9em;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    text-align: left
+}
+
+.d-recent-acadam .list-item span a {
+    text-decoration: none;
+    color: inherit
+}
+
+.d-recent-acadam .list-item .list-item-a {
+    float: left;
+    width: 60%
+}
+
+.d-recent-acadam .list-item .list-item-b {
+    float: right;
+    width: 28%;
+    text-align: left
+}
+
+.d-recent-acadam .infinite-scroll-component {
+    margin-right: 0;
+    width: 100%
+}
