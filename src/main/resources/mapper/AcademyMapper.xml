@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kokoa.acait.mapper.AcademyMapper">
+		<!-- 게시물 목록 -->
+	<update id="createAcademy" parameterType="hashMap">
+		INSERT INTO TB_ACAD(
+			TRAIN_CD,
+			TRAIN_TITLE,
+			ACAD_CD,
+			ACAD_TITLE,
+			URL,
+			ADDRESS,
+			TEL_NO,
+			TARGET,
+			YARD_MAN,
+			COURSE_MAN,
+			REAL_MAN,
+			TRAIN_DEGR,
+			START_DATE,
+			END_DATE,
+			REG_DATE
+		)VALUES(
+			#{trainCd},
+			#{trainTitle},
+			#{acadCd},
+			#{acadTitle},
+			#{url},
+			#{address},
+			#{telNo},
+			#{target},
+			#{yardMan},
+			#{courseMan},
+			#{realMan},
+			#{trainDegr},
+			#{startDate},
+			#{endDate},
+			SYSDATE()
+		)
+		ON DUPLICATE KEY UPDATE
+			TRAIN_TITLE = #{trainTitle},
+			ACAD_TITLE = #{acadTitle},
+			URL = #{url},
+			ADDRESS = #{address},
+			TEL_NO = #{telNo},
+			TARGET = #{target},
+			YARD_MAN = #{yardMan},
+			COURSE_MAN = #{courseMan},
+			REAL_MAN = #{realMan},
+<!-- 			TRAIN_DEGR = #{trainDegr}, -->
+			START_DATE = #{startDate},
+			END_DATE = #{endDate},
+			UPDT_DATE = SYSDATE()
+	</update>
+</mapper>
