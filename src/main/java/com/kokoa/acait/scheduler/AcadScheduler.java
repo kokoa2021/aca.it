@@ -34,7 +34,7 @@ public class AcadScheduler {
   public static String URL2 = "https://www.hrd.go.kr/jsp/HRDP/HRDPO00/HRDPOA60/HRDPOA60_2.jsp";
   public static String SERVICE_KEY = "gV6TA7Ep5JFP66lYZgtEip3bkBl6av4s";
   
-  // 매주 토툐일 새벽 3시에 시작
+  // 매주 토요일 새벽 3시에 시작
   @Scheduled(cron = "0 0 3 * * 6")
   public void autoUpdate() throws Exception {
     logger.info(new Date() + "스케쥴러 실행");
