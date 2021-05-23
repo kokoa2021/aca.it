@@ -24,9 +24,8 @@ import com.kokoa.acait.mapper.AcademyMapper;
 
 @Component
 public class AcadScheduler {
-
   private static final Logger logger = LoggerFactory.getLogger(AcadScheduler.class);
-
+  
   @Autowired
   private AcademyMapper academyMapper;
 
@@ -37,11 +36,11 @@ public class AcadScheduler {
   //스케쥴러 실행중인지 확인할 전역변수 설정
   public static boolean onScheduled = false;
 
-  // 매주 일요일 새벽 1시에 실행되는 스케쥴러
-  @Scheduled(cron = "0 0 1 * * 0")
+  // 매주 토요일 새벽 3시에 시작
+  @Scheduled(cron = "0 0 3 * * 6")
   public void autoUpdate() throws Exception {
     logger.info(new Date() + "스케쥴러 실행");
-    //스케쥴러 실행되면 true 변경
+      //스케쥴러 실행되면 true 변경
     onScheduled = true;
     
     int result = 0;
@@ -64,6 +63,7 @@ public class AcadScheduler {
     onScheduled = false;
   }
 
+  //tag값 정보를 가져오는 메소드
   private static String getTagValue(String tag, Element eElement) {
     NodeList nList = null;
     Node nValue = null;
@@ -80,13 +80,14 @@ public class AcadScheduler {
 
   private void createDetailInfo(Map<String, String> acadInfo) {
     Document documentInfo = null;
-    // URL 설정
+    // 파싱할 url 지정
     String parseUrl =
         URL2 + "?returnType=XML&authKey=" + SERVICE_KEY + "&srchTrprId=" + acadInfo.get("trainCd")
             + "&srchTrprDegr=" + acadInfo.get("trainDegr") + "&outType=2&srchTorgId=default";
     try {
       documentInfo =
           (Document) DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(parseUrl);
+      //root tag
       documentInfo.getDocumentElement().normalize();
       // 과정,기관정보 데이터 파싱
       parseDetailXml(documentInfo.getDocumentElement(), acadInfo);
@@ -130,7 +131,6 @@ public class AcadScheduler {
       map.put("realMan", getTagValue("realMan", eElement)); // 실제 수강비
       map.put("trainDegr", getTagValue("trprDegr", eElement)); // 회차
 
-      // list.put(getTagValue("trprId", eElement), map);
       list.add(map);
     }
   }
@@ -158,6 +158,7 @@ public class AcadScheduler {
           break;
         documentInfo = (Document) DocumentBuilderFactory.newInstance().newDocumentBuilder()
             .parse(parseUrl + pageNum);
+        documentInfo.getDocumentElement().normalize();
         if (pageNum == 1) {
           // 총 학원 갯수
           tot = Integer.parseInt(getTagValue("scn_cnt", documentInfo.getDocumentElement()));
@@ -168,7 +169,6 @@ public class AcadScheduler {
 
         pageNum++;
       }
-      documentInfo.getDocumentElement().normalize();
     } catch (SAXException e) {
       e.printStackTrace();
     } catch (IOException e) {
