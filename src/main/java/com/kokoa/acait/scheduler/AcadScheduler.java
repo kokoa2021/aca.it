@@ -34,12 +34,16 @@ public class AcadScheduler {
   public static String URL = "https://www.hrd.go.kr/jsp/HRDP/HRDPO00/HRDPOA60/HRDPOA60_1.jsp";
   public static String URL2 = "https://www.hrd.go.kr/jsp/HRDP/HRDPO00/HRDPOA60/HRDPOA60_2.jsp";
   public static String SERVICE_KEY = "gV6TA7Ep5JFP66lYZgtEip3bkBl6av4s";
+  //스케쥴러 실행중인지 확인할 전역변수 설정
+  public static boolean onScheduled = false;
 
   // 매주 일요일 새벽 1시에 실행되는 스케쥴러
   @Scheduled(cron = "0 0 1 * * 0")
   public void autoUpdate() throws Exception {
     logger.info(new Date() + "스케쥴러 실행");
-
+    //스케쥴러 실행되면 true 변경
+    onScheduled = true;
+    
     int result = 0;
     List<Map<String, String>> list = new ArrayList<>();
 
@@ -56,6 +60,8 @@ public class AcadScheduler {
       e.printStackTrace();
     }
     logger.info("총 학원 갯수:" + result);
+    //스케쥴러 끝나면 false로 변경
+    onScheduled = false;
   }
 
   private static String getTagValue(String tag, Element eElement) {

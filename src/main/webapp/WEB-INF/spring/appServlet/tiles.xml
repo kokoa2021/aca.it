@@ -4,7 +4,15 @@
   "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-
+	<!-- 타일즈 미 적용 -->
+	<definition name="empty" template="/WEB-INF/views/tiles/normalLayout.jsp">
+        <put-attribute name="body" value=""/>  
+    </definition>
+    
+	<definition name="error/*" extends="empty">
+          <put-attribute name="body" value="/WEB-INF/views/error/{1}.jsp"></put-attribute>         
+    </definition>
+    
 	<!-- tiles 적용 -->
 	<definition name="tilesLayout" template="/WEB-INF/views/tiles/layout.jsp">
 		<put-attribute name="css" expression="/WEB-INF/views/tiles/css.jsp"/>
@@ -13,9 +21,9 @@
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
  
-<!--  	tiles 사용하여 화면에 표현 -->
+	<!--tiles 사용하여 화면에 표현 -->
 	<definition name="*" extends="tilesLayout">
-<!-- 		controller에서 사용하기 위한 방법 설정 -->
+		<!-- controller에서 사용하기 위한 방법 설정 -->
 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 	
@@ -26,19 +34,5 @@
 	<definition name="*/*/*" extends="tilesLayout">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
 	</definition>
-	
 		
-	<!-- 타일즈 미 적용 -->
-<!-- 	<definition name="normalLayout" template="/WEB-INF/views/layout/NormalLayout.jsp"> -->
-<!-- 		<put-attribute name="NormalLayout" value="" /> -->
-<!-- 	</definition> -->
-	
-<!-- 	<definition name="*.jsp" extends="normalForm"> -->
-<!-- 		<put-attribute name="NormalLayout" value="/WEB-INF/views/{1}.jsp" /> -->
-<!-- 	</definition> -->
-		
-<!-- 	<definition name="*/*.jsp" extends="normalForm"> -->
-<!-- 		<put-attribute name="NormalLayout" value="/WEB-INF/views/{1}/{2}.jsp" /> -->
-<!-- 	</definition> -->
-	
 </tiles-definitions>
