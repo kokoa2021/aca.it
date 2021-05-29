@@ -16,8 +16,8 @@
 <!-- 	 <property name="url" value="jdbc:mariadb://localhost:3307/acait" /> -->
 	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
 	<property name="url" value="jdbc:log4jdbc:mariadb://localhost:3307/acait" />
-	 <property name="username" value="sally" />
-	 <property name="password" value="1234" />
+	 <property name="username" value="root" />
+	 <property name="password" value="4188" />
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
