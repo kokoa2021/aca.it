@@ -28,6 +28,7 @@
       <div class="recent-academy">
       
           <a href="/acait/board">게시물 목록</a>
+          <a href="/acait/write">게시물 작성</a>
         <div class="d-recent-academy-wrapper d-recent-academy">
           <div class="list-header">
             <span>실시간 검색 기업</span>

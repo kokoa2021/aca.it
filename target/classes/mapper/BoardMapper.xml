@@ -19,6 +19,11 @@
 			title, content, hit, reg_date, board_no
 		FROM tb_board;
 	</select>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="count" resultType="int">
+	 select count(board_no) from tb_board
+	</select>
 
 	<insert id="insertBoard" parameterType="com.kokoa.acait.vo.BoardVO">
 		INSERT INTO tb_board (

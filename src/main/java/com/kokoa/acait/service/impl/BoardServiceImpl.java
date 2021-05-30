@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kokoa.acait.mapper.BoardMapper;
@@ -22,7 +23,14 @@ public class BoardServiceImpl implements BoardService {
 	
 	  return BoardMapper.list();
 	 }
+	 
+	// 게시물 총 갯수
+	 @Override
+	 public int count() throws Exception {
+	  return BoardMapper.count(); 
+	 }
 	
+
 }
 
 

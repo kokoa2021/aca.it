@@ -25,6 +25,7 @@ public class BoardController {
   @Autowired
   private BoardService boardService;
   
+  //게시물 목록
   @RequestMapping(value = "/board", method = RequestMethod.GET)
   public ModelAndView getList(ModelAndView model)  {
 	  List<BoardVO> list = null;
@@ -36,6 +37,23 @@ public class BoardController {
 		e.printStackTrace();
 	}
 	model.setViewName("board/board");
+	model.addObject("boardlist", list);
+	
+	return model;
+  }
+  
+  //게시물 작성
+  @RequestMapping(value = "/write", method = RequestMethod.GET)
+  public ModelAndView getWrite(ModelAndView model)  {
+	  List<BoardVO> list = null;
+	  
+	  try {
+		list = boardService.list();
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	model.setViewName("board/write");
 	model.addObject("boardlist", list);
 	
 	return model;
