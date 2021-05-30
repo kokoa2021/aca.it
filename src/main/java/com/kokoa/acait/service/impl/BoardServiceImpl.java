@@ -3,12 +3,12 @@ import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
-import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kokoa.acait.mapper.BoardMapper;
 import com.kokoa.acait.service.BoardService;
 import com.kokoa.acait.vo.BoardVO;
+import com.kokoa.acait.vo.CriteriaVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -17,20 +17,26 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper BoardMapper;
 	
 	 
-	 // 게시물 목록
+	 /* 게시물 목록 */
 	 @Override
 	 public List<BoardVO> list() throws Exception {
 	
 	  return BoardMapper.list();
 	 }
 	 
-	// 게시물 총 갯수
+	 /* 게시판 목록(페이징 적용) */
 	 @Override
-	 public int count() throws Exception {
-	  return BoardMapper.count(); 
+	 public List<BoardVO> getListPaging(CriteriaVO cri) throws Exception {
+	        
+	   return BoardMapper.getListPaging(cri);
 	 }
+	 
+	 /* 게시물 총 개수 */
+	 @Override
+	 public int getTotal() {
+		return BoardMapper.getTotal();
+	}  
 	
-
 }
 
 

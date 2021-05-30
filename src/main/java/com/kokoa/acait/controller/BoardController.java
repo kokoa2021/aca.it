@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kokoa.acait.service.AcademyService;
 import com.kokoa.acait.service.BoardService;
 import com.kokoa.acait.vo.BoardVO;
+import com.kokoa.acait.vo.CriteriaVO;
+import com.kokoa.acait.vo.PageMakerVO;
 
 @Controller
 public class BoardController {
@@ -25,41 +27,45 @@ public class BoardController {
   @Autowired
   private BoardService boardService;
   
-  //게시물 목록
-  @RequestMapping(value = "/board", method = RequestMethod.GET)
-  public ModelAndView getList(ModelAndView model)  {
-	  List<BoardVO> list = null;
-	  
-	  try {
-		list = boardService.list();
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	model.setViewName("board/board");
-	model.addObject("boardlist", list);
-	
-	return model;
-  }
+//  @RequestMapping(value = "/board", method = RequestMethod.GET)
+//  public ModelAndView getList(ModelAndView model)  {
+//	  List<BoardVO> list = null;
+//	  
+//	  try {
+//		list = boardService.list();
+//	} catch (Exception e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	model.setViewName("board/board");
+//	model.addObject("boardlist", list);
+//	
+//	return model;
+//  }
   
-  //게시물 작성
-  @RequestMapping(value = "/write", method = RequestMethod.GET)
-  public ModelAndView getWrite(ModelAndView model)  {
+  /* 게시판 목록 페이지 접속(페이징 적용) */
+  @RequestMapping(value = "/board", method = RequestMethod.GET)
+  public ModelAndView getList(ModelAndView model, CriteriaVO cri)  {
 	  List<BoardVO> list = null;
 	  
 	  try {
-		list = boardService.list();
+		list = boardService.getListPaging(cri);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	model.setViewName("board/write");
-	model.addObject("boardlist", list);
+	  int total = boardService.getTotal();
+	  PageMakerVO pageMake = new PageMakerVO(cri, total);
+	
+	  model.setViewName("board/board");
+	  model.addObject("pageMaker", pageMake);
+	  model.addObject("boardlist", list);
 	
 	return model;
   }
-}
+ 
 
+}
 
 //@RequestMapping(value = "/board", method = RequestMethod.GET)
 //public ModelAndView academyDetail(@PathVariable("acadCd") String acadCd, ModelAndView mav) {

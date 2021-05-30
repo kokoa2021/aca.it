@@ -14,16 +14,23 @@
 		, UPDT_DATE
 	</sql>
 	
-	<select id="list" resultType="com.kokoa.acait.vo.BoardVO">
-		SELECT 
-			title, content, hit, reg_date, board_no
-		FROM tb_board;
-	</select>
+    <!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+        select count(*) from tb_board
+    </select>
 	
-	<!-- 게시물 총 갯수 -->
-	<select id="count" resultType="int">
-	 select count(board_no) from tb_board
-	</select>
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
+    
+    <![CDATA[
+        
+        select * from (
+        	select board_no, title, content, reg_date, updt_date, hit 
+        		from tb_board ORDER BY board_no) AS T1
+        		LIMIT #{skip},#{amount}
+    ]]>
+    
+    </select>
 
 	<insert id="insertBoard" parameterType="com.kokoa.acait.vo.BoardVO">
 		INSERT INTO tb_board (
