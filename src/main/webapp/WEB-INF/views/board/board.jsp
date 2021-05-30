@@ -4,15 +4,34 @@
 <html>
 <head>
 	<title>Board</title>
+	<meta charset="UTF-8">
 </head>
 <body>
 	<div>
 		<div>
-
-			<c:forEach var="boardlist" items="${boardlist}">
-				${boardlist.title}
-				${boardlist.content}
-			</c:forEach>
+			<table>
+				<thead>
+					<tr>
+						<th> 번호 </th>
+						<th> 제목 </th>
+						<th> 내용 </th>
+						<th> 작성일 </th>
+						<th> 조회수 </th>						
+					</tr>
+				</thead>
+				
+				<tbody>
+					<c:forEach var="boardlist" items="${boardlist}">
+					<tr>
+						<td> ${boardlist.board_no} </td>
+						<td> ${boardlist.title} </td>
+						<td> ${boardlist.content} </td>
+						<th> ${boardlist.reg_date} </th>
+						<th> ${boardlist.hit} </th>
+					</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>	
 	</div>
 </body>

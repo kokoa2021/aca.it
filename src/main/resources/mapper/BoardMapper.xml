@@ -15,7 +15,8 @@
 	</sql>
 	
 	<select id="list" resultType="com.kokoa.acait.vo.BoardVO">
-		SELECT TITLE, CONTENT
+		SELECT 
+			title, content, hit, reg_date, board_no
 		FROM tb_board;
 	</select>
 
