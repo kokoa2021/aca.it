@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kokoa.acait.mapper.BoardMapper">
+
+	<sql id="boardColumns">
+		  BOARD_NO
+		, ACAD_CD
+		, TITLE
+		, CONTENT
+		, PWD
+		, DEL_YN
+		, HIT
+		, REG_DATE
+		, UPDT_DATE
+	</sql>
+	
+    <!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(*) FROM tb_board
+    </select>
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
+    
+    <![CDATA[
+        SELECT * FROM (
+        	SELECT board_no, title, content, reg_date, updt_date, hit 
+        		FROM tb_board ORDER BY board_no) AS T1
+        		LIMIT #{skip},#{amount}
+    ]]>
+    
+    </select>
+
+	<insert id="insertBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+		INSERT INTO tb_board (
+			<include refid="boardColumns" />
+		) VALUES (
+			  #{BOARD_NO}
+			, #{ACAD_CD}
+			, #{TITLE}
+			, #{CONTENT}
+			, 0
+			, 'N'
+			, 0
+			, NULL
+			, NULL
+		)
+	</insert>
+
+	<select id="selectBoardDetail" parameterType="long" resultType="com.kokoa.acait.vo.BoardVO">
+		SELECT
+			<include refid="boardColumns" />
+		FROM
+			tb_board
+		WHERE
+			DEL_YN = 'N'
+		AND
+			BOARD_NO = #{BOARD_NO}
+	</select>
+
+	<update id="updateBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+		UPDATE tb_board
+		SET
+			  UPDT_DATE = NOW()
+			, ACAD_CD = #{ACAD_CD}
+			, TITLE = #{TITLE}
+			, CONTENT = #{CONTENT}
+		WHERE
+			BOARD_NO = #{BOARD_NO}
+	</update>
+
+	<update id="deleteBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+		UPDATE tb_board
+		SET
+			  DEL_YN = 'Y'
+		WHERE
+			BOARD_NO = #{BOARD_NO}
+	</update>
+
+	<select id="selectBoardList" parameterType="com.kokoa.acait.vo.BoardVO" resultType="com.kokoa.acait.vo.BoardVO">
+		SELECT
+			<include refid="boardColumns" />
+		FROM
+			tb_board
+		WHERE
+			DEL_YN = 'N'
+		ORDER BY
+			BOARD_NO DESC,
+			REG_DATE DESC
+	</select>
+
+	<select id="selectBoardTotalCount" parameterType="com.kokoa.acait.vo.BoardVO" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			tb_board
+		WHERE
+			DEL_YN = 'N'
+	</select>
+
+</mapper>

@@ -9,13 +9,8 @@ public class BoardVO extends rateVO{
   private String delYn;  
   private String regDate;
   private String updtDate;
+  private String hit;
   
-  public int getBoardNo() {
-    return boardNo;
-  }
-  public void setBoardNo(int boardNo) {
-    this.boardNo = boardNo;
-  }
   public String getAcadCd() {
     return acadCd;
   }
@@ -58,4 +53,16 @@ public class BoardVO extends rateVO{
   public void setUpdtDate(String updtDate) {
     this.updtDate = updtDate;
   }
+public String getHit() {
+	return hit;
+}
+public void setHit(String hit) {
+	this.hit = hit;
+}
+public int getBoardNo() {
+	return boardNo;
+}
+public void setBoardNo(int boardNo) {
+	this.boardNo = boardNo;
+}
 }
