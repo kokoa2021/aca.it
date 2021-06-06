@@ -9,7 +9,7 @@
     </div>
    <div class="header-nav">
       <ul class="header-nav-items">
-        <a href="/">
+        <a href="/acait/board">
           <li class="header-nav-item">
             <img src="" alt="ACA담">
               <span>ACA담</span>

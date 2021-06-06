@@ -16,17 +16,16 @@
 	
     <!-- 게시물 총 개수 -->
     <select id="getTotal" resultType="int">
-        select count(*) from tb_board
+        SELECT COUNT(*) FROM tb_board
     </select>
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
     
     <![CDATA[
-        
-        select * from (
-        	select board_no, title, content, reg_date, updt_date, hit 
-        		from tb_board ORDER BY board_no) AS T1
+        SELECT * FROM (
+        	SELECT board_no, title, content, reg_date, updt_date, hit 
+        		FROM tb_board ORDER BY board_no) AS T1
         		LIMIT #{skip},#{amount}
     ]]>
     
