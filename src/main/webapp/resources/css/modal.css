@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+.acadam-edit-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display:none;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container {
+    width: 900px;
+    height: 575px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.acadam-edit-modal .acadam-edit-modal-container {
+    border-radius: 4px 4px 0 0;
+    background-color: #f6f6f6;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper {
+    text-align: left;
+    padding: 30px 60px;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper {
+    overflow-y: scroll;
+
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    font-size: 22px;
+    color: #444;
+}
+
+/* 검색창 */
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .search-bar {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    width: 360px;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .search-bar input {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #d6d6d6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 40px;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .search-bar i {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    font-size: 10px;
+    color: #d6d6d6;
+}
+
+/* 평가창 */
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .rate-list {
+    margin-top: 0;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .rate-list {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .rate-list .acadam-post-tag {
+    height: 27px;
+    display: inline-block;
+    float: left;
+    line-height: 25px;
+    font-size: 9px;
+    padding: 0 12px;
+    border-radius: 30px;
+    margin-top: 4px;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .rate-list .acadam-post-tag .acadam-post-tag .title {
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+
+/* 제목 + 내용 */
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .contents {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+    position: relative;
+    height: 286px;
+    overflow-y: scroll;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .contents .post-title-wrapper,.post-content-wrapper {
+	padding: 0 10px;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .contents .post-title-wrapper input {
+   width:100%
+}
+
+/* pwd + 게시 */
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .input-pwd {
+    margin-top: 14px;
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+}
+
+.acadam-edit-modal .acadam-edit-modal-container .acadam-edit-modal-wrapper .input-pwd input,button {
+  float: right;
+}
+
+
+/* toggle */
+.major-toggle-bg{
+	background: #CCCCCC;
+	width: 40px;
+	height: 15px;
+	border: 1px solid #CCCCCC;
+	border-radius: 15px;
+	display: inline-block;
+}
+
+.major-toggle-fg{
+	background: #FFFFFF;
+	width: 15px;
+	height: 15px;
+	border: none;
+	border-radius: 15px;
+	position: relative;
+	left: 0px;
+	float:left
+}
+
+.major-toggle-bg.on{
+	background: #53FF4C;
+}
+
+.major-toggle-fg.on{
+	left: 25px;
+}
