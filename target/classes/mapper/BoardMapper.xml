@@ -3,8 +3,8 @@
 <mapper namespace="com.kokoa.acait.mapper.BoardMapper">
 
 	<sql id="boardColumns">
-		  BOARD_NO
-		, ACAD_CD
+		  BOARD_NO AS boardNo
+		, ACAD_CD AS acadCd
 		, TITLE
 		, CONTENT
 		, PWD
@@ -80,16 +80,17 @@
 		AND
 			BOARD_NO = #{BOARD_NO}
 	</select>
-
-	<update id="updateBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+	
+	<!-- 게시물 수정 -->
+	<update id="modify" parameterType="com.kokoa.acait.vo.BoardVO">
 		UPDATE tb_board
 		SET
 			  UPDT_DATE = NOW()
-			, ACAD_CD = #{ACAD_CD}
-			, TITLE = #{TITLE}
-			, CONTENT = #{CONTENT}
+			, ACAD_CD = 1
+			, TITLE = #{title}
+			, CONTENT = #{content}
 		WHERE
-			BOARD_NO = #{BOARD_NO}
+			BOARD_NO = #{boardNo}
 	</update>
 
 	<update id="deleteBoard" parameterType="com.kokoa.acait.vo.BoardVO">

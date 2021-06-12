@@ -3,34 +3,26 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>게시물 조회</title>
+	<title>Write</title>
 	<meta charset="UTF-8">
 </head>
 <body>
 	<div>
 		<div>
-			<h1>게시물 상세</h1>
+			<h1>게시물 수정</h1>
 			
 			<form method="post">
-				<label>번호</label>
-				<input type="text" name="boardNo" value="${view.boardNo}" /><br />
-				
+
 				<label>제목</label>
 				<input type="text" name="title" value="${view.title}" /><br />
 				
-				<label>조회수</label>
-				<input type="text" name="hit" value="${view.hit}" /><br />
-				
-				<label>등록일</label>
-				<input type="text" name="regDate" value="${view.regDate}" /><br />
+				<label>비번</label>
+				<input type="text" name="pwd" value="${view.pwd}"/><br />
 				
 				<label>내용</label>
 				<textarea cols="50" rows="5" name="content">${view.content}</textarea><br />
 				
-				<div>
-				<a href="/acait/modify?boardNo=${view.boardNo}">게시물 수정</a>
-				</div>
-
+				<button type="submit">수정완료</button>
 			
 			</form>
 		</div>	

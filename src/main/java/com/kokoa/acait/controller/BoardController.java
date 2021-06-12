@@ -92,6 +92,24 @@ public class BoardController {
 		return model;
 	}
 	
+	// 게시물 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public ModelAndView getModify(@RequestParam("boardNo") int boardNo, ModelAndView model) throws Exception {
+		model.setViewName("board/modify");
+		BoardVO vo = boardService.view(boardNo);
+	   
+		model.addObject("view", vo);
+		return model;
+	}
+	
+	//게시물 수정2
+		@RequestMapping(value = "/modify", method = RequestMethod.POST)
+		public String postModify(BoardVO vo,  RedirectAttributes rttr) throws Exception {
+			boardService.modify(vo);
+			rttr.addFlashAttribute("result", "enrol success");
+			return "redirect:/view?boardNo=" + vo.getBoardNo();
+		}
+	
 //	
 //	/* 게시판 등록 */
 //    @RequestMapping(value = "/write", method = RequestMethod.POST)

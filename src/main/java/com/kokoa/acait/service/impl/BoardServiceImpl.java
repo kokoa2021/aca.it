@@ -59,6 +59,12 @@ public class BoardServiceImpl implements BoardService {
 	 return BoardMapper.view(BoardNo);
 	}
 	
+	// 게시물 수정
+	@Override
+	public void modify(BoardVO vo) throws Exception {
+		BoardMapper.modify(vo);
+	}
+	
 
 
 
