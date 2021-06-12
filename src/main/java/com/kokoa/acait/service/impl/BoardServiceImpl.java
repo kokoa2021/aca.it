@@ -51,6 +51,15 @@ public class BoardServiceImpl implements BoardService {
 			e.printStackTrace();
 		}
 	}
+	
+	// 게시물 조회
+	@Override
+	public BoardVO view(int BoardNo) throws Exception {
+
+	 return BoardMapper.view(BoardNo);
+	}
+	
+
 
 
 }

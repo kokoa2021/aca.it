@@ -41,7 +41,7 @@
 	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
     <![CDATA[
         SELECT * FROM (
-        	SELECT board_no AS boardNo, title, content, reg_date AS regDate, updt_date AS updtDate, hit 
+        	SELECT board_no AS boardNo, title, content, reg_date, updt_date, hit 
         		FROM tb_board 
         		WHERE	DEL_YN = 'N'
         			ORDER BY 
@@ -69,23 +69,8 @@
 		  VALUES(1, #{title}, #{content}, #{pwd}) 
     </insert>
 	
-	<insert id="write2" parameterType="com.kokoa.acait.vo.BoardVO">
-		INSERT INTO tb_board (
-			<include refid="boardColumns" />
-		) VALUES (
-			  #{BOARD_NO}
-			, #{ACAD_CD}
-			, #{TITLE}
-			, #{CONTENT}
-			, 0
-			, 'N'
-			, 0
-			, NULL
-			, NULL
-		)
-	</insert>
-
-	<select id="selectBoardDetail" parameterType="long" resultType="com.kokoa.acait.vo.BoardVO">
+	<!-- 게시물 상세 -->
+	<select id="view" parameterType="int" resultType="com.kokoa.acait.vo.BoardVO">
 		SELECT
 			<include refid="boardColumns" />
 		FROM

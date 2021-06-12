@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+
 <html>
 	<style>
 		a{
@@ -90,7 +91,7 @@
 					<c:forEach var="boardlist" items="${boardlist}">
 					<tr>
 						<td> ${boardlist.boardNo} </td>
-						<td> ${boardlist.title} </td>
+						<td> <a href="/acait/view?boardNo=${boardlist.boardNo}">${boardlist.title}</a> </td>
 						<td> ${boardlist.content} </td>
 						<th> ${boardlist.regDate} </th>
 						<th> ${boardlist.hit} </th>

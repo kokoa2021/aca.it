@@ -16,7 +16,8 @@ public interface BoardMapper {
 	/* 게시물 작성 */
 	public void write(BoardVO vo) throws Exception;
 	//public int insertBoard(BoardVO params);
-
+	
+	/* 게시물 상세 */
 	public BoardVO view(int BoardNo) throws Exception;
 	//public BoardVO selectBoardDetail(int BoardNo);
 	
