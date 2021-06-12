@@ -109,6 +109,15 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "enrol success");
 			return "redirect:/view?boardNo=" + vo.getBoardNo();
 		}
+		
+	// 게시물 삭제
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String getDelete(@RequestParam("boardNo") int boardNo) throws Exception {
+	  
+		boardService.delete(boardNo);  
+
+	 return "redirect:/board";
+	}
 	
 //	
 //	/* 게시판 등록 */

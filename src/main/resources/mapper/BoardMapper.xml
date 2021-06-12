@@ -10,8 +10,8 @@
 		, PWD
 		, DEL_YN AS delYn
 		, HIT
-		, REG_DATE AS REG_DATE
-		, UPDT_DATE
+		, REG_DATE AS regDate
+		, UPDT_DATE AS updtDate
 	</sql>
 	
 	<!-- 쿼리 결과에 대한 맵핑 변수명 vs 컬럼명 -->
@@ -65,8 +65,8 @@
     
 	<!-- 게시물 등록 -->
 	<insert id="write" parameterType="com.kokoa.acait.vo.BoardVO">
-        insert into tb_board(ACAD_CD, TITLE, CONTENT, PWD)
-		  VALUES(1, #{title}, #{content}, #{pwd}) 
+        insert into tb_board(ACAD_CD, TITLE, CONTENT, PWD, REG_DATE)
+		  VALUES(1, #{title}, #{content}, #{pwd}, NOW()) 
     </insert>
 	
 	<!-- 게시물 상세 -->
@@ -93,12 +93,13 @@
 			BOARD_NO = #{boardNo}
 	</update>
 
-	<update id="deleteBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+	<!-- 게시물 삭제 -->
+	<update id="delete" parameterType="com.kokoa.acait.vo.BoardVO">
 		UPDATE tb_board
 		SET
 			  DEL_YN = 'Y'
 		WHERE
-			BOARD_NO = #{BOARD_NO}
+			BOARD_NO = #{boardNo}
 	</update>
 
 	<select id="selectBoardList" parameterType="com.kokoa.acait.vo.BoardVO" resultType="com.kokoa.acait.vo.BoardVO">

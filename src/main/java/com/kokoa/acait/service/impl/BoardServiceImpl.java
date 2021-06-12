@@ -65,7 +65,10 @@ public class BoardServiceImpl implements BoardService {
 		BoardMapper.modify(vo);
 	}
 	
-
+	// 게시물 삭제
+	public void delete(int BoardNo) throws Exception {
+		BoardMapper.delete(BoardNo);
+	}
 
 
 }

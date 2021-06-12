@@ -28,7 +28,8 @@
 				<textarea cols="50" rows="5" name="content">${view.content}</textarea><br />
 				
 				<div>
-				<a href="/acait/modify?boardNo=${view.boardNo}">게시물 수정</a>
+				<a href="/acait/modify?boardNo=${view.boardNo}">게시물 수정</a>,
+				<a href="/acait/delete?boardNo=${view.boardNo}">게시물 삭제</a>
 				</div>
 
 			

@@ -9,7 +9,7 @@
 <body>
 	<div>
 		<div>
-			<h1>게시물 수정</h1>
+			<h1>게시물 작성</h1>
 			
 			<form method="post">
 
@@ -21,6 +21,9 @@
 				
 				<label>내용</label>
 				<textarea cols="50" rows="5" name="content"></textarea><br />
+				<button type="button" class="acadam-write-btn" onclick="openEditModal()">
+                  글쓰기
+               </button>   
 				
 				<button type="submit">완료</button>
 			
