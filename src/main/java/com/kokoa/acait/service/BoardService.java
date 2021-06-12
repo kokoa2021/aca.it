@@ -6,10 +6,16 @@ import com.kokoa.acait.vo.CriteriaVO;
 public interface BoardService {
 	
 	// 게시물 목록
-	public List<BoardVO> list() throws Exception; 
+	public List<BoardVO> list(int BoardNo) throws Exception; 
 	
 	// 게시물 총 갯수 
     public int getTotal();
+    
+    // 게시물 조회수
+    public void updateBoardHit(int BoardNo);
+    
+    // 게시물 등록
+    public void write(BoardVO vo) throws Exception;
 
 	public List<BoardVO> getListPaging(CriteriaVO cri) throws Exception;
 }

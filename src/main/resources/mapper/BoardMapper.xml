@@ -14,24 +14,62 @@
 		, UPDT_DATE
 	</sql>
 	
-    <!-- 게시물 총 개수 -->
-    <select id="getTotal" resultType="int">
-        SELECT COUNT(*) FROM tb_board
-    </select>
+	<!-- 쿼리 결과에 대한 맵핑 변수명 vs 컬럼명 -->
+    <resultMap type="com.kokoa.acait.vo.BoardVO" id="mapping_boardColumns">
+		<result property="boardNo" column="BOARD_NO"/>
+        <result property="acadCd" column="ACAD_CD"/>
+        <result property="regDate" column="REG_DATE"/>
+        <result property="updtDate" column="UPDT_DATE"/>
+    </resultMap>
 	
 	<!-- 게시물 목록 + 페이징 -->
-	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
-    
+	<select id="getListPaging2" resultType="com.kokoa.acait.vo.BoardVO">
     <![CDATA[
         SELECT * FROM (
-        	SELECT board_no, title, content, reg_date, updt_date, hit 
-        		FROM tb_board ORDER BY board_no) AS T1
+        	SELECT board_no AS boardNo, title, content, reg_date AS regDate, updt_date AS updtDate, hit 
+        		FROM tb_board 
+        		WHERE	DEL_YN = 'N'
+				ORDER BY 
+				  	BOARD_NO DESC,
+					REG_DATE DESC
+					) AS T1
         		LIMIT #{skip},#{amount}
     ]]>
-    
     </select>
-
-	<insert id="insertBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+    
+    <!-- 게시물 목록 + 페이징 + 검색(정렬) -->
+	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
+    <![CDATA[
+        SELECT * FROM (
+        	SELECT board_no AS boardNo, title, content, reg_date, updt_date, hit 
+        		FROM tb_board 
+        		WHERE	DEL_YN = 'N'
+        			ORDER BY 
+				  	#{sort} DESC
+					) AS T1
+        		LIMIT #{skip},#{amount}
+    ]]>
+    </select>
+    
+    <!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(*) FROM TB_BOARD
+    </select>
+    
+     <!-- 게시물 조회수 -->
+    <update id="updateBoardHit" parameterType="int">
+        UPDATE tb_board SET
+    	HIT = HIT+1
+    	WHERE BOARD_NO = #{BOARD_NO}
+    </update>
+    
+	<!-- 게시물 등록 -->
+	<insert id="write" parameterType="com.kokoa.acait.vo.BoardVO">
+        insert into tb_board(ACAD_CD, TITLE, CONTENT, PWD)
+		  VALUES(1, #{title}, #{content}, #{pwd}) 
+    </insert>
+	
+	<insert id="write2" parameterType="com.kokoa.acait.vo.BoardVO">
 		INSERT INTO tb_board (
 			<include refid="boardColumns" />
 		) VALUES (

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kokoa.acait.service.AcademyService;
 import com.kokoa.acait.service.BoardService;
@@ -63,71 +64,20 @@ public class BoardController {
 	
 	return model;
   }
- 
-
-}
-
-//@RequestMapping(value = "/board", method = RequestMethod.GET)
-//public ModelAndView academyDetail(@PathVariable("acadCd") String acadCd, ModelAndView mav) {
-//    AcademyVO acadVO = academyService.selectAcadDetail(acadCd);
-//    List<AcademyVO> trainVO = academyService.selectTrainDetail(acadCd);
-//    
-//    mav.setViewName("academy/academyDetail");
-//    mav.addObject("acadVO",acadVO); 
-//    mav.addObject("trainVO",trainVO);  
-//    return mav;
-//}
-
-
-
-
-
-//
-//package com.kokoa.acait.controller;
-//import java.util.List;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//
-//import com.kokoa.acait.service.BoardService;
-//@Controller
-////@RequestMapping("//*")
-//public class BoardController {
-//
-//@Autowired
-//private BoardService service;
-// 
-//	 // 게시물 목록
-//	 @RequestMapping(value = "/list", method = RequestMethod.GET)
-//	 public void getList(Model model) throws Exception {
-//	  
-//	  List list = null;
-//	  model.addAttribute("list", list);
-//	 }
-//}
+  
+	//게시물 작성
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public ModelAndView getWirte(ModelAndView model, BoardVO vo) throws Exception {
+		boardService.write(vo);
+	//return "redirect:/board";
+		model.setViewName("board/write");
+		return model;
+	}
 	
-
-
-//package com.kokoa.acait.controller;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//
-//import com.kokoa.acait.service.BoardService;
-//
-//@Controller
-//public class BoardController {
-//
-//	@Autowired
-//	private BoardService boardService;
-//
-//	@GetMapping(value = "/board/write.do")
-//	public String openBoardWrite(Model model) {
-//		return "board/write";
-//	}
-//
-//}
+	//게시물 작성
+		@RequestMapping(value = "/write", method = RequestMethod.POST)
+		public String postWirte(BoardVO vo,  RedirectAttributes rttr) throws Exception {
+			boardService.write(vo);
+			rttr.addFlashAttribute("result", "enrol success");
+			return "redirect:/board";
+	}

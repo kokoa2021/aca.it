@@ -10,6 +10,9 @@ public class CriteriaVO extends rateVO{
     /* 스킵 할 게시물 수( (pageNum-1) * amount ) */
     private int skip;
     
+    /* 정렬 방식 */
+    private String sort;
+    
     /* 기본 생성자 -> 기봅 세팅 : pageNum = 1, amount = 10 */
     public CriteriaVO() {
         this(1,10);
@@ -47,5 +50,17 @@ public class CriteriaVO extends rateVO{
 
 	public void setSkip(int skip) {
 		this.skip = skip;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+	@Override
+	public String toString() {
+		return "CriteriaVO [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip + ", sort=" + sort + "]";
 	}
 }
