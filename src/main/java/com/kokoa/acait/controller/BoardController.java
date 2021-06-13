@@ -2,6 +2,8 @@ package com.kokoa.acait.controller;
 
 import java.util.List;
 
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kokoa.acait.service.AcademyService;
 import com.kokoa.acait.service.BoardService;
+import com.kokoa.acait.service.CommentService;
 import com.kokoa.acait.vo.BoardVO;
+import com.kokoa.acait.vo.CommentVO;
 import com.kokoa.acait.vo.CriteriaVO;
 import com.kokoa.acait.vo.PageMakerVO;
 
@@ -28,7 +32,9 @@ public class BoardController {
   
   @Autowired
   private BoardService boardService;
+  private CommentService commentService;
   
+//@Autowired
 //  @RequestMapping(value = "/board", method = RequestMethod.GET)
 //  public ModelAndView getList(ModelAndView model)  {
 //	  List<BoardVO> list = null;
@@ -44,6 +50,8 @@ public class BoardController {
 //	
 //	return model;
 //  }
+  
+
   
   /* 게시판 목록 페이지 접속(페이징 적용) */
   @RequestMapping(value = "/board", method = RequestMethod.GET)
@@ -86,7 +94,14 @@ public class BoardController {
 	// 게시물 상세
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public ModelAndView getView(ModelAndView model, @RequestParam("boardNo") int boardNo) throws Exception {
+		//List<CommentVO> commentList = null;
 		model.setViewName("board/view");
+		
+		// 댓글 조회
+//		List<CommentVO> comment = null;
+		//commentList = commentService.list(boardNo);
+//		model.addObject("comment", comment);
+		
 		BoardVO vo = boardService.view(boardNo);
 		model.addObject("view", vo);
 		return model;
@@ -118,7 +133,8 @@ public class BoardController {
 
 	 return "redirect:/board";
 	}
-	
+}
+
 //	
 //	/* 게시판 등록 */
 //    @RequestMapping(value = "/write", method = RequestMethod.POST)
@@ -148,9 +164,7 @@ public class BoardController {
 //      LOGGER.info("BoardVO : " + vo);
 //      
 //  }
- 
 
-}
 
 //@RequestMapping(value = "/board", method = RequestMethod.GET)
 //public ModelAndView academyDetail(@PathVariable("acadCd") String acadCd, ModelAndView mav) {

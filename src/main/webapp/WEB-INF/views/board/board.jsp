@@ -126,6 +126,10 @@
 		                <c:if test="${pageMaker.next}">
 		                    <li class="pageInfo_btn next"><a href="/acait/board?pageNum=${pageMaker.endPage + 1 }">Next</a></li>
 		                </c:if> 
+		                
+		                <button type="button" class="acadam-write-btn" onclick="openEditModal()">
+			                  글쓰기
+			               </button>  
 					</ul>
 				</div>
 			</div>

@@ -21,9 +21,6 @@
 				
 				<label>내용</label>
 				<textarea cols="50" rows="5" name="content"></textarea><br />
-				<button type="button" class="acadam-write-btn" onclick="openEditModal()">
-                  글쓰기
-               </button>   
 				
 				<button type="submit">완료</button>
 			
