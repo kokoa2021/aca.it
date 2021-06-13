@@ -3,51 +3,74 @@
 <mapper namespace="com.kokoa.acait.mapper.BoardMapper">
 
 	<sql id="boardColumns">
-		  BOARD_NO
-		, ACAD_CD
+		  BOARD_NO AS boardNo
+		, ACAD_CD AS acadCd
 		, TITLE
 		, CONTENT
 		, PWD
-		, DEL_YN
+		, DEL_YN AS delYn
 		, HIT
-		, REG_DATE
-		, UPDT_DATE
+		, REG_DATE AS regDate
+		, UPDT_DATE AS updtDate
 	</sql>
 	
-    <!-- 게시물 총 개수 -->
-    <select id="getTotal" resultType="int">
-        SELECT COUNT(*) FROM tb_board
-    </select>
+	<!-- 쿼리 결과에 대한 맵핑 변수명 vs 컬럼명 -->
+    <resultMap type="com.kokoa.acait.vo.BoardVO" id="mapping_boardColumns">
+		<result property="boardNo" column="BOARD_NO"/>
+        <result property="acadCd" column="ACAD_CD"/>
+        <result property="regDate" column="REG_DATE"/>
+        <result property="updtDate" column="UPDT_DATE"/>
+    </resultMap>
 	
 	<!-- 게시물 목록 + 페이징 -->
-	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
-    
+	<select id="getListPaging2" resultType="com.kokoa.acait.vo.BoardVO">
     <![CDATA[
         SELECT * FROM (
         	SELECT board_no, title, content, reg_date, updt_date, hit 
-        		FROM tb_board ORDER BY board_no) AS T1
+        		FROM tb_board 
+        		WHERE	DEL_YN = 'N'
+				ORDER BY 
+				  	BOARD_NO DESC,
+					REG_DATE DESC
+					) AS T1
         		LIMIT #{skip},#{amount}
     ]]>
-    
     </select>
-
-	<insert id="insertBoard" parameterType="com.kokoa.acait.vo.BoardVO">
-		INSERT INTO tb_board (
-			<include refid="boardColumns" />
-		) VALUES (
-			  #{BOARD_NO}
-			, #{ACAD_CD}
-			, #{TITLE}
-			, #{CONTENT}
-			, 0
-			, 'N'
-			, 0
-			, NULL
-			, NULL
-		)
-	</insert>
-
-	<select id="selectBoardDetail" parameterType="long" resultType="com.kokoa.acait.vo.BoardVO">
+    
+    <!-- 게시물 목록 + 페이징 + 검색(정렬) -->
+	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
+    <![CDATA[
+        SELECT * FROM (
+        	SELECT board_no AS boardNo, title, content, reg_date, updt_date, hit 
+        		FROM tb_board 
+        		WHERE	DEL_YN = 'N'
+        			ORDER BY 
+				  	#{sort} DESC
+					) AS T1
+        		LIMIT #{skip},#{amount}
+    ]]>
+    </select>
+    
+    <!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(*) FROM TB_BOARD
+    </select>
+    
+     <!-- 게시물 조회수 -->
+    <update id="updateBoardHit" parameterType="int">
+        UPDATE tb_board SET
+    	HIT = HIT+1
+    	WHERE BOARD_NO = #{BOARD_NO}
+    </update>
+    
+	<!-- 게시물 등록 -->
+	<insert id="write" parameterType="com.kokoa.acait.vo.BoardVO">
+        insert into tb_board(ACAD_CD, TITLE, CONTENT, PWD, REG_DATE)
+		  VALUES(1, #{title}, #{content}, #{pwd}, NOW()) 
+    </insert>
+	
+	<!-- 게시물 상세 -->
+	<select id="view" parameterType="int" resultType="com.kokoa.acait.vo.BoardVO">
 		SELECT
 			<include refid="boardColumns" />
 		FROM
@@ -57,24 +80,26 @@
 		AND
 			BOARD_NO = #{BOARD_NO}
 	</select>
-
-	<update id="updateBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+	
+	<!-- 게시물 수정 -->
+	<update id="modify" parameterType="com.kokoa.acait.vo.BoardVO">
 		UPDATE tb_board
 		SET
 			  UPDT_DATE = NOW()
-			, ACAD_CD = #{ACAD_CD}
-			, TITLE = #{TITLE}
-			, CONTENT = #{CONTENT}
+			, ACAD_CD = 1
+			, TITLE = #{title}
+			, CONTENT = #{content}
 		WHERE
-			BOARD_NO = #{BOARD_NO}
+			BOARD_NO = #{boardNo}
 	</update>
 
-	<update id="deleteBoard" parameterType="com.kokoa.acait.vo.BoardVO">
+	<!-- 게시물 삭제 -->
+	<update id="delete" parameterType="com.kokoa.acait.vo.BoardVO">
 		UPDATE tb_board
 		SET
 			  DEL_YN = 'Y'
 		WHERE
-			BOARD_NO = #{BOARD_NO}
+			BOARD_NO = #{boardNo}
 	</update>
 
 	<select id="selectBoardList" parameterType="com.kokoa.acait.vo.BoardVO" resultType="com.kokoa.acait.vo.BoardVO">

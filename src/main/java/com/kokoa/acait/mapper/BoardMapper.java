@@ -13,9 +13,11 @@ public interface BoardMapper {
 	public List<BoardVO> list() throws Exception; 
 	//public List<BoardVO> selectBoardList();
 	
+	/* 게시물 작성 */
 	public void write(BoardVO vo) throws Exception;
 	//public int insertBoard(BoardVO params);
-
+	
+	/* 게시물 상세 */
 	public BoardVO view(int BoardNo) throws Exception;
 	//public BoardVO selectBoardDetail(int BoardNo);
 	
@@ -29,6 +31,9 @@ public interface BoardMapper {
 	
 	/* 게시판 총 갯수 */
     public int getTotal();
+    
+    /* 게시판 조회수 */
+    public void updateBoardHit(int BOARD_NO);
     
 	public List listPage(int displayPost, int postNum) throws Exception;
 	public List<BoardVO> listPageSearch(

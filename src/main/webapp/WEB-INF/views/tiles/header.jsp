@@ -15,7 +15,7 @@
               <span>ACA담</span>
          </li>
         </a>
-        <a href="/">
+        <a href="/acait/write">
           <li class="header-nav-item">
             <img src="" alt="학원현황">
               <span>학원현황</span>

@@ -18,7 +18,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	 /* 게시물 목록 */
 	 @Override
-	 public List<BoardVO> list() throws Exception {
+	 public List<BoardVO> list(int BoardNo) throws Exception {
+		 BoardMapper.updateBoardHit(BoardNo);
 	  return BoardMapper.list();
 	 }
 	 
@@ -32,5 +33,42 @@ public class BoardServiceImpl implements BoardService {
 	 @Override
 	 public int getTotal() {
 		return BoardMapper.getTotal();
-	}  
+	}
+	 
+	 /* 게시물 조회수 */
+	 @Override
+	 public void updateBoardHit(int BoardNo) {
+		 BoardMapper.updateBoardHit(BoardNo);
+	}
+
+	 /* 게시물 등록 */
+	@Override
+	public void write(BoardVO vo) {
+		try {
+			BoardMapper.write(vo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	// 게시물 조회
+	@Override
+	public BoardVO view(int BoardNo) throws Exception {
+
+	 return BoardMapper.view(BoardNo);
+	}
+	
+	// 게시물 수정
+	@Override
+	public void modify(BoardVO vo) throws Exception {
+		BoardMapper.modify(vo);
+	}
+	
+	// 게시물 삭제
+	public void delete(int BoardNo) throws Exception {
+		BoardMapper.delete(BoardNo);
+	}
+
+
 }

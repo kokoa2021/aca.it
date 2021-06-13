@@ -65,4 +65,9 @@ public int getBoardNo() {
 public void setBoardNo(int boardNo) {
 	this.boardNo = boardNo;
 }
+@Override
+public String toString() {
+	return "BoardVO [boardNo=" + boardNo + ", acadCd=" + acadCd + ", title=" + title + ", content=" + content + ", pwd="
+			+ pwd + ", delYn=" + delYn + ", regDate=" + regDate + ", updtDate=" + updtDate + ", hit=" + hit + "]";
+}
 }
