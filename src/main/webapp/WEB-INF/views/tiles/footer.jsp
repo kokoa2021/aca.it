@@ -19,7 +19,7 @@
 <body>
     <div class="footer-infos">
       <div class="footer-info"></div>
-      <div class="footer-copyright">© Kokoa</div>
+      <div class="footer-copyright" style="margin-top: 90px">with<br>KOKOA TEAM</div>
     </div>
     <form name="acadam-write-form" id="acadam-write-form" method="post" action="/acait/board">
 		<div class="acadam-edit-modal">
