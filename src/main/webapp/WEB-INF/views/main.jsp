@@ -8,19 +8,19 @@
 <body>
   <div class="main-wrapper">
     <div class="main-title-container">
-      <span class="main-title">내용을</span>
-      <span class="main-title">뭘쓰지?_?</span>
+      <span class="main-title">국비지원 IT학원, </span>
+      <span class="main-title">알아보고 가자!</span>
     </div>
     <div class="main-search-box-container">
       <div class="search-box-wrapper">
         <div class="search-box-search-btn">
-          <img src="" alt="searh"/>
+          <img src="../../../resources/images/search_y.png" alt="searh"/>
         </div>
         <div class="search-box-query-box">
           <input type="text" class="search-query" placeholder="학원을 검색해보세요">
         </div>
         <div class="search-box-cancel-btn">
-          <img src="" alt="cancel"/>
+          <img src="../../../resources/images/close_y.png" alt="cancel"/>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
           <div class="list-header">
             <span>실시간 검색 기업</span>
             <span class="reload-btn">
-              <i class="material-icons"></i>
+              <img src="../../../resources/images/refresh_b.png"  width="20px" height="20px" align="bottom" "searh"/>
             </span>
           </div>
           <div class="row" style="height: 220px; overflow-y: scroll;">
