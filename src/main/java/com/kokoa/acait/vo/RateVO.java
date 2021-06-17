@@ -1,12 +1,15 @@
 package com.kokoa.acait.vo;
 
-public class rateVO {
+public class RateVO {
   private int rateNo;
   private String acadCd;
   private int boardNo;
   private int major;
-  private int environment;
-  private int teacher;
+  private float  totalRate;
+  private int majorRate;
+  private int nonMajorRate;
+  private float environment;
+  private float teacher;
   private String delYn;
   private String regDate;
   private String updtDate;
@@ -35,16 +38,34 @@ public class rateVO {
   public void setMajor(int major) {
     this.major = major;
   }
-  public int getEnvironment() {
+  public float getTotalRate() {
+    return totalRate;
+  }
+  public void setTotalRate(float totalRate) {
+    this.totalRate = totalRate;
+  }
+  public int getMajorRate() {
+    return majorRate;
+  }
+  public void setMajorRate(int majorRate) {
+    this.majorRate = majorRate;
+  }
+  public int getNonMajorRate() {
+    return nonMajorRate;
+  }
+  public void setNonMajorRate(int nonMajorRate) {
+    this.nonMajorRate = nonMajorRate;
+  }
+  public float getEnvironment() {
     return environment;
   }
-  public void setEnvironment(int environment) {
+  public void setEnvironment(float environment) {
     this.environment = environment;
   }
-  public int getTeacher() {
+  public float getTeacher() {
     return teacher;
   }
-  public void setTeacher(int teacher) {
+  public void setTeacher(float teacher) {
     this.teacher = teacher;
   }
   public String getDelYn() {
@@ -65,4 +86,6 @@ public class rateVO {
   public void setUpdtDate(String updtDate) {
     this.updtDate = updtDate;
   }
+  
+ 
 }

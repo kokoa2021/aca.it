@@ -1,4 +1,5 @@
 package com.kokoa.acait.service.impl;
+
 import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
@@ -70,5 +71,17 @@ public class BoardServiceImpl implements BoardService {
 		BoardMapper.delete(BoardNo);
 	}
 
+  // 학원 상세 관련 악담 리스트
+  @Override
+  public List<BoardVO> getListBoardAjax(CriteriaVO cri) throws RuntimeException {
+    return BoardMapper.getListBoardAjax(cri);
+  }
+
+  // 학원 상세 관련 악담 게시물 총 갯수
+  @Override
+  public int getTotalAjax(String acadCd) throws RuntimeException {
+    return BoardMapper.getTotalAjax(acadCd);
+  }
 
 }
+
