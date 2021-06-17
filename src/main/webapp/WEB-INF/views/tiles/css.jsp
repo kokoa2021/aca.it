@@ -3,5 +3,5 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link href="${path}/resources/css/layout.css" rel="stylesheet">
 <link href="${path}/resources/css/main.css" rel="stylesheet">
-<%-- <link href="${path}/resources/css/academy.css" rel="stylesheet"> --%>
+<link href="${path}/resources/css/academy.css" rel="stylesheet">
 <link href="${path}/resources/css/modal.css" rel="stylesheet">

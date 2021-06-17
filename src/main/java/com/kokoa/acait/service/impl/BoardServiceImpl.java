@@ -1,4 +1,5 @@
 package com.kokoa.acait.service.impl;
+
 import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
@@ -12,25 +13,37 @@ import com.kokoa.acait.vo.CriteriaVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
-	
-	@Autowired
-	private BoardMapper BoardMapper;
-	
-	 /* 게시물 목록 */
-	 @Override
-	 public List<BoardVO> list() throws Exception {
-	  return BoardMapper.list();
-	 }
-	 
-	 /* 게시판 목록(페이징 적용) */
-	 @Override
-	 public List<BoardVO> getListPaging(CriteriaVO cri) throws Exception {
-	   return BoardMapper.getListPaging(cri);
-	 }
-	 
-	 /* 게시물 총 개수 */
-	 @Override
-	 public int getTotal() {
-		return BoardMapper.getTotal();
-	}  
+
+  @Autowired
+  private BoardMapper BoardMapper;
+
+  /* 게시물 목록 */
+  @Override
+  public List<BoardVO> list() throws Exception {
+    return BoardMapper.list();
+  }
+
+  /* 게시판 목록(페이징 적용) */
+  @Override
+  public List<BoardVO> getListPaging(CriteriaVO cri) throws Exception {
+    return BoardMapper.getListPaging(cri);
+  }
+
+  /* 게시물 총 개수 */
+  @Override
+  public int getTotal() {
+    return BoardMapper.getTotal();
+  }
+
+  // 학원 상세 관련 악담 리스트
+  @Override
+  public List<BoardVO> getListBoardAjax(CriteriaVO cri) throws RuntimeException {
+    return BoardMapper.getListBoardAjax(cri);
+  }
+
+  // 학원 상세 관련 악담 게시물 총 갯수
+  @Override
+  public int getTotalAjax(String acadCd) throws RuntimeException {
+    return BoardMapper.getTotalAjax(acadCd);
+  }
 }

@@ -1,6 +1,6 @@
 package com.kokoa.acait.vo;
 
-public class BoardVO extends rateVO{
+public class BoardVO extends RateVO{
   private int boardNo;
   private String acadCd;
   private String title;

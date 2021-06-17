@@ -1,54 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kokoa.acait.mapper.AcademyMapper">
-		<!-- 게시물 목록 -->
-	<update id="createAcademy" parameterType="hashMap">
-		INSERT INTO TB_ACAD(
-			TRAIN_CD,
-			TRAIN_TITLE,
-			ACAD_CD,
-			ACAD_TITLE,
-			URL,
-			ADDRESS,
-			TEL_NO,
-			TARGET,
-			YARD_MAN,
-			COURSE_MAN,
-			REAL_MAN,
-			TRAIN_DEGR,
-			START_DATE,
-			END_DATE,
-			REG_DATE
-		)VALUES(
-			#{trainCd},
-			#{trainTitle},
-			#{acadCd},
-			#{acadTitle},
-			#{url},
-			#{address},
-			#{telNo},
-			#{target},
-			#{yardMan},
-			#{courseMan},
-			#{realMan},
-			#{trainDegr},
-			#{startDate},
-			#{endDate},
-			SYSDATE()
-		)
-		ON DUPLICATE KEY UPDATE
-			TRAIN_TITLE = #{trainTitle},
-			ACAD_TITLE = #{acadTitle},
-			URL = #{url},
-			ADDRESS = #{address},
-			TEL_NO = #{telNo},
-			TARGET = #{target},
-			YARD_MAN = #{yardMan},
-			COURSE_MAN = #{courseMan},
-			REAL_MAN = #{realMan},
-<!-- 			TRAIN_DEGR = #{trainDegr}, -->
-			START_DATE = #{startDate},
-			END_DATE = #{endDate},
-			UPDT_DATE = SYSDATE()
-	</update>
+	<select id="selectAcadDetail" resultType="com.kokoa.acait.vo.AcademyVO">
+		SELECT DISTINCT ACAD_CD AS acadCd
+				,ACAD_TITLE AS acadTitle
+				,URL
+				,ADDRESS
+				,TEL_NO AS telNo
+		FROM tb_acad
+		WHERE ACAD_CD = #{acadCd}
+	</select>
+	
+	<select id="selectTrainDetail" resultType="com.kokoa.acait.vo.AcademyVO">
+		SELECT TRAIN_CD AS trainCd
+				,TRAIN_TITLE AS trainTitle
+				,TRAIN_DEGR AS trainDegr
+				,TARGET
+				,YARD_MAN AS yardMan
+				,START_DATE AS startDate
+				,END_DATE AS endDate
+		FROM tb_acad
+		WHERE ACAD_CD = #{acadCd}
+				AND START_DATE BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL +3 MONTH)
+		ORDER BY START_DATE LIMIT 5	
+	</select>	
+	
+	<select id="selectAcadRate" resultType="com.kokoa.acait.vo.RateVO">
+		SELECT A.ACAD_CD AS acadCd
+			  ,ROUND(A.MAJOR/A.TOTAL * 10,0) AS majorRate
+			  ,ROUND(A.NON_MAJOR/A.TOTAL * 10,0) AS nonMajorRate
+			  ,ROUND(A.ENVIRONMENT,1) AS ENVIRONMENT
+			  ,ROUND(A.TEACHER,1) AS TEACHER
+			  ,ROUND((A.ENVIRONMENT+A.TEACHER)/2,1) AS totalRate
+		FROM (
+				SELECT ACAD_CD
+					  ,COUNT(*) AS TOTAL
+					  ,COUNT(case when major=1 then 1 END) AS MAJOR
+					  ,COUNT(case when major=0 then 1 END) AS NON_MAJOR
+					  ,AVG(ENVIRONMENT) AS ENVIRONMENT
+					  ,AVG(TEACHER) AS TEACHER
+					  ,DEL_YN
+			   FROM tb_rate
+			   WHERE ACAD_CD = '201600340' AND 
+			   		 DEL_YN = 'N'
+			 )A;
+	</select>
 </mapper>

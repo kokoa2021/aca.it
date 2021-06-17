@@ -98,4 +98,27 @@
 			DEL_YN = 'N'
 	</select>
 
+	<select id="getListBoardAjax" resultType="com.kokoa.acait.vo.BoardVO">
+		SELECT bo.BOARD_NO AS boardNo
+				, bo.ACAD_CD AS acadCd
+				, bo.TITLE
+				, bo.CONTENT
+				, bo.PWD
+				, bo.REG_DATE AS regDate
+				, bo.HIT
+				, ra.MAJOR
+				, ra.ENVIRONMENT
+				, ra.TEACHER
+			FROM tb_board bo
+				JOIN tb_rate ra ON bo.ACAD_CD = ra.ACAD_CD AND bo.BOARD_NO = ra.BOARD_NO
+			WHERE bo.ACAD_CD = #{acadCd}
+			ORDER BY bo.REG_DATE DESC
+			LIMIT #{skip},#{amount}
+	</select>
+	
+	<select id="getTotalAjax" resultType="int">
+		SELECT COUNT(*) 
+		FROM TB_BOARD
+		WHERE ACAD_CD = #{acadCd}
+	</select>
 </mapper>

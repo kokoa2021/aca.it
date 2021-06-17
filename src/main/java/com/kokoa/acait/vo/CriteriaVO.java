@@ -1,6 +1,6 @@
 package com.kokoa.acait.vo;
 
-public class CriteriaVO extends rateVO{
+public class CriteriaVO extends RateVO{
     /* 현재 페이지 */
     private int pageNum;
     
