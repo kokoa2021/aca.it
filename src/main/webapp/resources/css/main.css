@@ -1,14 +1,17 @@
 /*MAIN*/
+노랑 : #FFD339 / 파랑 : #689BDA
 .main-wrapper {
     height: 100%;
     padding-top: 55px;
     overflow-x: hidden;
 }
 .main-title-container {
-    font-size: 46px;
+    font-size: 56px;
     font-weight: bold;
-    margin-top: 100px;
-    margin-bottom: 52px
+    margin-top: 130px;
+    margin-bottom: 52px;
+    font-family: 'sc7';
+    color : #689BDA;
 }
 .search-box-wrapper {
     float: left;
@@ -43,9 +46,9 @@
 }
 
 .search-box-wrapper .search-box-query-box input::placeholder {
-    font-size: 12px;
-    font-weight: normal;
-    color: #d6d6d6;
+    font-size: 20px;
+    font-family: 'sc3';
+    color: #FFD339;
 }
 
 .search-box-wrapper .search-box-search-btn img {
@@ -71,7 +74,7 @@
     margin: 0;
     height: 51px;
     background: none;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid #FFD339;
     border-radius: 0;
     padding: 0 5px;
     position: relative;
@@ -82,7 +85,7 @@
 }
 
 .main-search-box-container .search-box-wrapper .search-box-search-btn img {
-    width: 43px;
+    width: 38px;
     margin-top: 0
 }
 
@@ -92,8 +95,13 @@
     position: relative
 }
 
-.main-search-box-container .search-box-wrapper .search-box-query-box {
-    height: 43px
+.main-search-box-container .search-box-wrapper .search-query {
+    height: 43px;
+    font-family: 'sc5';
+    color:#FFD339;
+    caret-color: 	#FFD339;
+}:focus{
+	outline: none;
 }
 
 .main-search-box-container .search-box-wrapper .search-box-query-box input {
@@ -101,7 +109,9 @@
     background: #fff !important;
     padding: 0 10px;
     font-size: 22px;
-    line-height: 43px
+    line-height: 43px;
+    font-family: 'sc5';
+    color:#555555;
 }
 
 .main-recent-wrapper {
@@ -124,7 +134,16 @@
 }
 .main-wrapper .list-header {
     height: 30px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    margin-left:50px;
+    color: #689BDA;
+    font-family: 'sc5';
+}
+.main-wrapper .list-header .total{
+    height: 30px;
+    margin-bottom: 5px;
+    color: #689BDA;
+    font-family: 'sc3';
 }
 
 .main-wrapper .list-title {
@@ -136,15 +155,32 @@
 }
 .d-recent-academy {
     height: 500px;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
+    padding-right: 40px;
+    margin-left: 10px;
 }
 
+  .row::-webkit-scrollbar {
+    width: 3.5px;
+  }
+  .row::-webkit-scrollbar-thumb {
+    background-color: #FFD339;
+    border-radius: 10px;
+  }
+  .row::-webkit-scrollbar-track {
+    background-color: #689BDA;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 10px #689BDA;
+  }
+
 .d-recent-academy .list-header {
-    text-align: left;
+    text-align: center;
     font-weight: bold;
-    font-size: 1em;
-    line-height: 40px
+    font-size: 1.2em;
+    line-height: 40px;
+    margin-bottom: 20px;
 }
+
 
 .d-recent-academy .reload-btn {
     width: 40px;
@@ -152,7 +188,8 @@
     background-color: #fff;
     float: right;
     cursor: pointer;
-    text-align: center
+    text-align: center;
+    padding-top: 10px;
 }
 
 .d-recent-academy .reload-btn i {
@@ -164,18 +201,18 @@
     height: 35px;
     line-height: 35px;
     color: #444444;
-    text-decoration: none
+    text-decoration: none;
+    font-family: 'sc3';
 }
 
 .d-recent-academy .list-item span {
-    font-size: 0.9em;
-    text-align: left;
+    font-size: 1.1em;
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     width: 100%;
-    text-align: left;
     display: block
 }
 
@@ -185,19 +222,23 @@
 }
 .d-recent-acadam {
     height: 500px;
-    background-color: #f7f7f7
+    background-color: #ffffff;
+        padding-left: 20px;
+    margin-right: 60px;
 }
 
 .d-recent-acadam .list-header {
-    text-align: left;
+    text-align: center;
     font-weight: bold;
-    font-size: 1em;
-    line-height: 40px
+    font-size: 1.2em;
+    line-height: 40px;
+    margin-bottom: 20px;
 }
 
 .d-recent-acadam .list-header .total {
     float: right;
-    margin-right: 1em
+    margin-right: 1em;
+    font-size: 0.8em;
 }
 
 .d-recent-acadam .list-item {
@@ -205,11 +246,12 @@
     height: 35px;
     line-height: 35px;
     color: #444444;
-    text-decoration: none
+    text-decoration: none;
+    font-family: 'sc3';
 }
 
 .d-recent-acadam .list-item span {
-    font-size: 0.9em;
+    font-size: 1.1em;
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
@@ -231,7 +273,9 @@
 .d-recent-acadam .list-item .list-item-b {
     float: right;
     width: 28%;
-    text-align: left
+    text-align: left;
+    font-size: 0.8em;
+    color: #689BDA;
 }
 
 .d-recent-acadam .infinite-scroll-component {

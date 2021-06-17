@@ -30,10 +30,13 @@ public interface BoardMapper {
   /* 게시판 총 갯수 */
   public int getTotal();
 
-  public List listPage(int displayPost, int postNum) throws Exception;
+  /* 게시판 조회수 */
+  public void updateBoardHit(int BOARD_NO);
 
-  public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType,
-      String keyword) throws Exception;
+	public List listPage(int displayPost, int postNum) throws Exception;
+	public List<BoardVO> listPageSearch(
+			   int displayPost, int postNum, String searchType, String keyword) throws Exception;
+  }
 
   // 학원 상세 관련 악담 리스트
   public List<BoardVO> getListBoardAjax(CriteriaVO cri);

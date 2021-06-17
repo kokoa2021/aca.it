@@ -5,3 +5,4 @@
 <link href="${path}/resources/css/main.css" rel="stylesheet">
 <link href="${path}/resources/css/academy.css" rel="stylesheet">
 <link href="${path}/resources/css/modal.css" rel="stylesheet">
+<link href="${path}/resources/css/fonts.css" rel="stylesheet">

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+
 <html>
 	<style>
 		a{
@@ -66,10 +67,17 @@
 	<head>
 		<title>Board</title>
 		<meta charset="UTF-8">
+		<script
+		  src="https://code.jquery.com/jquery-3.4.1.js"
+		  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" 
+		  crossorigin="anonymous"></script>
 	</head>
 	<body>
 	<h1>목록페이지입니다.</h1>
 		<div class="table_wrap">
+						<!-- 정렬 버튼 -->
+						<a href="/acait/board?sort=HIT">조회순</a>
+						<a href="/acait/board?sort=REG_DATE">날짜순</a>
 			<table>
 				<thead>
 					<tr>
@@ -83,7 +91,7 @@
 					<c:forEach var="boardlist" items="${boardlist}">
 					<tr>
 						<td> ${boardlist.boardNo} </td>
-						<td> ${boardlist.title} </td>
+						<td> <a href="/acait/view?boardNo=${boardlist.boardNo}">${boardlist.title}</a> </td>
 						<td> ${boardlist.content} </td>
 						<th> ${boardlist.regDate} </th>
 						<th> ${boardlist.hit} </th>
@@ -93,7 +101,14 @@
 			<form id="moveForm" method="get">
 				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 				<input type="hidden" name="amount" value="${pageMaker.cri.amount}"> 
+				<input type="hidden" name="sort" value="${pageMaker.cri.sort}">
 			</form>
+		<div class="sort_wrap">
+	        <div class="search_area">
+	            <input type="String" name="sort" value="${pageMaker.cri.sort}">
+	            <button>Sort</button>
+	        </div>
+	    </div>  
 		<div class="pageInfo_wrap">
 			<div class="pageInfo_area">
 					<ul id="pageInfo" class="pageInfo">
@@ -111,9 +126,32 @@
 		                <c:if test="${pageMaker.next}">
 		                    <li class="pageInfo_btn next"><a href="/acait/board?pageNum=${pageMaker.endPage + 1 }">Next</a></li>
 		                </c:if> 
+		                
+		                <button type="button" class="acadam-write-btn" onclick="openEditModal()">
+			                  글쓰기
+			               </button>  
 					</ul>
 				</div>
 			</div>
-		</div>	
+		</div>
+		<script>
+		    $(document).ready(function(){
+		    	let result = '<c:out value="${result}"/>'
+		    		checkAlert(result);
+		        
+			        function checkAlert(result){
+			            
+			            if(result === ''){
+			                reutrn;
+			            }
+			            
+			            if(result === "enrol success"){
+			                alert("등록이 완료되었습니다.");
+			            }
+			            
+			        }    
+		    });
+		 
+		</script>	
 	</body>
 </html>
