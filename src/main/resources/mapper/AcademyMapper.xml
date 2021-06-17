@@ -43,6 +43,6 @@
 			   FROM tb_rate
 			   WHERE ACAD_CD = '201600340' AND 
 			   		 DEL_YN = 'N'
-			 )A;
+			 )A
 	</select>
 </mapper>

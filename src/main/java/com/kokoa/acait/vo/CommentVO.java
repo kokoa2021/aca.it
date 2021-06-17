@@ -1,6 +1,6 @@
 package com.kokoa.acait.vo;
 
-public class CommentVO extends rateVO{
+public class CommentVO extends RateVO{
 	/*
 	 * CREATE TABLE `tb_comment` (
 	 `CMT_NO` INT(11) NOT NULL AUTO_INCREMENT COMMENT '댓글번호',

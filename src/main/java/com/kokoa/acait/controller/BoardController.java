@@ -129,7 +129,6 @@ public class BoardController {
 
 	 return "redirect:/board";
 	}
-}
 
 //	
 //	/* 게시판 등록 */
