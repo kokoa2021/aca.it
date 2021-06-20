@@ -3,24 +3,17 @@
 <mapper namespace="com.kokoa.acait.mapper.BoardMapper">
 
 	<sql id="boardColumns">
-		  BOARD_NO AS boardNo
+		  BOARD_NO 
 		, ACAD_CD AS acadCd
 		, TITLE
 		, CONTENT
 		, PWD
 		, DEL_YN AS delYn
 		, HIT
-		, REG_DATE AS regDate
-		, UPDT_DATE AS updtDate
+		, REG_DATE
+		, UPDT_DATE
 	</sql>
 	
-	<!-- 쿼리 결과에 대한 맵핑 변수명 vs 컬럼명 -->
-    <resultMap type="com.kokoa.acait.vo.BoardVO" id="mapping_boardColumns">
-		<result property="boardNo" column="BOARD_NO"/>
-        <result property="acadCd" column="ACAD_CD"/>
-        <result property="regDate" column="REG_DATE"/>
-        <result property="updtDate" column="UPDT_DATE"/>
-    </resultMap>
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="getListPaging2" resultType="com.kokoa.acait.vo.BoardVO">
@@ -30,22 +23,22 @@
         		FROM tb_board 
         		WHERE	DEL_YN = 'N'
 				ORDER BY 
-				  	BOARD_NO DESC,
-					REG_DATE DESC
+				  	BOARD_NO,
+					REG_DATE 
 					) AS T1
         		LIMIT #{skip},#{amount}
     ]]>
     </select>
     
     <!-- 게시물 목록 + 페이징 + 검색(정렬) -->
-	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO">
+	<select id="getListPaging" resultType="com.kokoa.acait.vo.BoardVO" parameterType="com.kokoa.acait.vo.CriteriaVO">
     <![CDATA[
         SELECT * FROM (
         	SELECT board_no AS boardNo, title, content, reg_date, updt_date, hit 
         		FROM tb_board 
         		WHERE	DEL_YN = 'N'
         			ORDER BY 
-				  	#{sort} DESC
+				  	${sort} DESC
 					) AS T1
         		LIMIT #{skip},#{amount}
     ]]>

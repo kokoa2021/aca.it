@@ -17,7 +17,7 @@
 				<input type="text" name="title" /><br />
 				
 				<label>비번</label>
-				<input type="text" name="pwd" /><br />
+				<input type="password" name="pwd" /><br />
 				
 				<label>내용</label>
 				<textarea cols="50" rows="5" name="content"></textarea><br />
