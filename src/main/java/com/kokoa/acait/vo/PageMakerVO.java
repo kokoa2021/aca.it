@@ -1,6 +1,6 @@
 package com.kokoa.acait.vo;
 
-public class PageMakerVO extends rateVO{
+public class PageMakerVO extends RateVO{
     /* 시작 페이지 */
     private int startPage;
     
