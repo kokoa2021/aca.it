@@ -70,6 +70,24 @@ public class BoardController {
 	return model;
   }
   
+  
+  /*  */
+  @RequestMapping(value = "/board", method = RequestMethod.POST)
+  public String post(ModelAndView model, BoardVO vo)  {
+	  try {
+		boardService.write(vo);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	  
+	
+		return "redirect:/board";
+	}
+
+	
+
+  
 	//게시물 작성1
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public ModelAndView getWirte(ModelAndView model, BoardVO vo) throws Exception {

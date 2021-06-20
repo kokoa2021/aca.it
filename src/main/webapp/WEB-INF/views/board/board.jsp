@@ -76,8 +76,8 @@
 	<h1>목록페이지입니다.</h1>
 		<div class="table_wrap">
 						<!-- 정렬 버튼 -->
-						<a href="/acait/board?sort=HIT">조회순</a>
-						<a href="/acait/board?sort=REG_DATE">날짜순</a>
+						<a href="/acait/board?sort=REG_DATE">최신순</a>
+						<a href="/acait/board?sort=HIT">조회순</a>	
 			<table>
 				<thead>
 					<tr>
