@@ -5,7 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>아카잇 - 국비지원 IT학원정보🔍</title>
+
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/logo.png" type="image/x-icon" />
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/logo.png" type="image/x-icon" />
+
+
 <tiles:insertAttribute name="css"/>
 <tiles:insertAttribute name="script"/>
 </head>
